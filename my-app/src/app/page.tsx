@@ -14,8 +14,7 @@ import React, { useEffect, useState } from "react";
 // }
 
 export default function Home(){
-
-  const [facts,setFacts] = useState();
+  const [facts,setFacts] = useState('This Cat Video will bring you Joy https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
   const fetchFacts = () =>{
     try {
@@ -34,9 +33,9 @@ export default function Home(){
     }
   }
 
-  useEffect(()=>{
-    fetchFacts();
-  },[])
+  // useEffect(()=>{
+  //   fetchFacts();
+  // },[])
   
   return(
     <div className="h-screen text-white bg-black flex flex-col justify-center items-center mx-auto gap-5">
