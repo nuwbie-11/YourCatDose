@@ -39,7 +39,7 @@ export default function Home(){
   },[])
   
   return(
-    <div className="h-screen text-white flex flex-col justify-center items-center mx-auto gap-5">
+    <div className="h-screen text-white bg-black flex flex-col justify-center items-center mx-auto gap-5">
       <h1 className="text-xl lg:text-3xl font-bold">
         YOUR FURRBALL FACTS!!
       </h1>
