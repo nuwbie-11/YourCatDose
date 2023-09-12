@@ -12,6 +12,7 @@ type Response = [{
 
 export default function Breeds(){
     const [breeds,setBreeds] = useState<Response | null>(null) 
+    
 
     const fetchBreeds=()=>{
         try {
@@ -34,22 +35,13 @@ export default function Breeds(){
         fetchBreeds();
     },[] )
 
-    useEffect(()=>{
-        console.log(breeds);
-    },[breeds])
 
     return(
         <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">{
-            // JSON.stringify(breeds)
+            <div className="grid place-items-center grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                {
             breeds ? 
-            // Object.keys(breeds).map((key)=>(
-            //     <div key={key}>
-            //         <p>
-            //             {breeds[key]['name']}
-            //         </p>
-            //     </div>
-            // ))
+
             breeds.map((item,ix)=>(
                 <div key={item['id']}>
                 <Link  href={`/breeds/${item['id']}`}>
