@@ -58,7 +58,7 @@ export default function BreedDetail({params}:{params:{slug:string}}){
     return (
       <>
         {data ? (
-          <div className="w-screen flex lg:flex-row flex-col  lg:p-16">
+          <div className="w-screen flex  flex-col  lg:p-16">
             <div className="texts-section flex flex-col mx-auto px-5">
               <h1 className="text-3xl font-semibold">{data["name"]}</h1>
 
@@ -66,12 +66,12 @@ export default function BreedDetail({params}:{params:{slug:string}}){
 
               <p>{data['origin']}</p>
             </div>
-            <div ref={sliderRef} className="keen-slider">
+            <div  className="grid grid-cols-3 pt-8">
 
                 {
                     
                     imageURL.map((item,ix)=>(
-                        <div key={ix} className={`flex justify-center keen-slider__slide number-slide${ix+1}`}>
+                        <div key={ix} className={`flex justify-center`}>
                             <img className="img-responsive rounded h-72 w-96" src={imageURL[ix]} alt="" loading='lazy' />
                             {/* <Image src={imageURL[ix]} width={100} height={100} alt="" /> */}
                         </div>
