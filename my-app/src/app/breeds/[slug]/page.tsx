@@ -13,6 +13,7 @@ export default function BreedDetail({params}:{params:{slug:string}}){
     const [imageURL,setURL] = React.useState<string[]>([])
     const [sliderRef] = useKeenSlider()
 
+    
     const getDetails=()=>{
         fetch('https://api.thecatapi.com/v1/breeds').then((res)=>{
                 if (!res.ok) {
@@ -31,7 +32,6 @@ export default function BreedDetail({params}:{params:{slug:string}}){
                 })
             })
     }
-
     React.useEffect(()=>{
         getDetails()
         getData()
