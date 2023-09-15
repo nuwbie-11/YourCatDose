@@ -5,20 +5,8 @@ import React, { useEffect, useState } from "react";
 
 
 export default function Home(){
-  const [facts,setFacts] = useState('This Cat Video will bring you Joy https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-  const [isLoading,setLoading] = useState(false);
-  
+  const [facts,setFacts] = useState();
   const [isFetching,setFetching] = useState(false);
-
-
-
-
-
-
-
-  // useEffect(()=>{
-  //   fetchFacts();
-  // },[])
 
   useEffect(()=>{
     const controller = new AbortController()
@@ -63,7 +51,6 @@ export default function Home(){
       }
       
       {
-        isLoading ? null : 
         <button onClick={()=>setFetching(!isFetching)} className="rounded py-3 px-5 bg-purple-500 hover:bg-transparent hover:border hover:border-purple-500 hover:text-purple-500">
           Get Me More Facts!!
         </button>

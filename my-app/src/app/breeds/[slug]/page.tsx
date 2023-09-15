@@ -4,6 +4,8 @@
 
 import React from 'react';
 
+import Image from 'next/image';
+
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
@@ -58,7 +60,7 @@ export default function BreedDetail({params}:{params:{slug:string}}){
     return (
       <>
         {data ? (
-          <div className="w-screen flex  flex-col  lg:p-16">
+          <div className="w-screen flex md:flex-nowrap flex-col  lg:p-16">
             <div className="texts-section flex flex-col mx-auto px-5">
               <h1 className="text-3xl font-semibold">{data["name"]}</h1>
 
@@ -66,23 +68,17 @@ export default function BreedDetail({params}:{params:{slug:string}}){
 
               <p>{data['origin']}</p>
             </div>
-            <div  className="grid grid-cols-3 pt-8">
+            <div ref={sliderRef} className="keen-slider">
 
                 {
                     
                     imageURL.map((item,ix)=>(
-                        <div key={ix} className={`flex justify-center`}>
-                            <img className="img-responsive rounded h-72 w-96" src={imageURL[ix]} alt="" loading='lazy' />
-                            {/* <Image src={imageURL[ix]} width={100} height={100} alt="" /> */}
+                        <div key={ix} className={`flex justify-center keen-slider__slide number-slide${ix+1}`}>
+                            {/* <img className="img-responsive rounded h-72 w-96" src={imageURL[ix]} alt="" loading='lazy' /> */}
+                            <Image src={imageURL[ix]} width={500} height={250} quality={95} alt="" />
                         </div>
                     ))
                 }
-              {/* <div className="keen-slider__slide number-slide1">1</div>
-              <div className="keen-slider__slide number-slide2">2</div>
-              <div className="keen-slider__slide number-slide3">3</div>
-              <div className="keen-slider__slide number-slide4">4</div>
-              <div className="keen-slider__slide number-slide5">5</div>
-              <div className="keen-slider__slide number-slide6">6</div> */}
             </div>
           </div>
         ) : (
