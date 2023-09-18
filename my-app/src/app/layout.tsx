@@ -19,10 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-zinc-950 text-zinc-50 ${usedFonts.className}`}>
         <Header></Header>
-        <div className="">
-          {children}
+        
+        {children}
 
-        </div>
       </body>
     </html>
   );
