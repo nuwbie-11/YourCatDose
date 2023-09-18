@@ -1,59 +1,19 @@
-"use client"
-
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Render from "./clientRender";
+import { fetchBreeds } from "@/Services/api";
 
+export default async function Breeds() {
+  const controller = new AbortController();
 
-type Response = [{
-    name:any,
-    id:'string'
-}];
+  const data = await fetchBreeds(
+    controller,
+    "https://api.thecatapi.com/v1/breeds"
+  );
 
-
-export default function Breeds(){
-    const [breeds,setBreeds] = useState<Response | null>(null) 
-    
-
-    const fetchBreeds=()=>{
-        try {
-            fetch('https://api.thecatapi.com/v1/breeds').then((res)=>{
-                if (!res.ok) {
-                    throw new Error('Failed to fetch')
-                }
-
-                res.json().then((value)=>{
-                    setBreeds(value)
-                    
-                })
-            })
-        } catch (error) {
-            console.error('Error when fetching',error);
-        }
-    }
-
-    useEffect(()=>{
-        fetchBreeds();
-    },[] )
-
-
-    return(
-        <>
-            <div className="grid place-items-center grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-                {
-            breeds ? 
-
-            breeds.map((item,ix)=>(
-                <div key={item['id']}>
-                <Link  href={`/breeds/${item['id']}`}>
-                        {item['name']}
-                </Link>
-                    
-                </div>
-            ))
-            : <p>loading..</p>
-            }</div>
-
-        </>
-    )
-
+  return (
+    <div className="grid grid-cols-3 md:grid-cols-6 content-center gap-y-3 gap-x-1 mt-12 text-xs lg:text-base px-5">
+      {data ? <Render data={data} /> : <p>Loading</p>}
+    </div>
+  );
 }
